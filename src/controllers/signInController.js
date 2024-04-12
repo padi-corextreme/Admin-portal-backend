@@ -1,4 +1,4 @@
-import { signInModel } from "../models/signIn";
+import { signInModel } from "../models/signIn.js";
 
 
 
@@ -53,3 +53,4 @@ export const deleteUser = async (req,res) => {
     console.log(error)
    }
 }
+

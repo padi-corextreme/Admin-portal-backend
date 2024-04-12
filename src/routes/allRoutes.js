@@ -4,7 +4,7 @@ import { addUsers, deleteUser, getUser, getUsers, patchUser } from "../controlle
 
 const router = Router();
 
-router.post('/', addUsers);
+router.post('/addUser', addUsers);
 
 router.get ('/fetchUsers', getUsers);
 
@@ -13,3 +13,6 @@ router.get ('/fetchUser/:id', getUser);
 router.patch('/updateUser/:id', patchUser );
 
 router.delete('/removeUser/:id', deleteUser );
+
+
+export default router

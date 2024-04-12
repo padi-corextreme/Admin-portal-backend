@@ -12,4 +12,4 @@ const signInSchema = new schema ({
 });
 
 
-export const signInModel = mongoose.model ('SignIn', signInSchema)
+export const signInModel = mongoose.model ('SignIn', signInSchema, 'signIn')
