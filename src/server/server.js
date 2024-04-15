@@ -21,7 +21,6 @@ app.use('/', router)
 
 const PORT = process.env.PORT
 
-
 await mongoose.connect(process.env.MONGO_URI);
 
 
