@@ -1,6 +1,6 @@
 
 import bcrypt from 'bcrypt'
-import { accountModel } from "./account.js"
+import { accountModel } from "../models/account.js"
 
 
 async function hashPassword(password) {
@@ -21,6 +21,13 @@ export const createUser = async (req, res, next) => {
         const data = req.body
         // Hash plain password
         const hashedPassword = await hashPassword(req.body.password)
+        //
+        // const user = await accountModel.find(data.email)
+        // //if(user){
+        //     return res.send('')
+        // }else{
+            
+        // }
         const { firstName, email, lastName, country, companyName } = await accountModel.create({
             ...data,
             password: hashedPassword
