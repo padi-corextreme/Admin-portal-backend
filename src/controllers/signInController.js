@@ -1,5 +1,5 @@
 
-
+import { accountModel } from "../models/account.js"
 import jwt from "jsonwebtoken"
 import dotenv from "dotenv"
 import bcrypt from "bcrypt"
@@ -16,7 +16,7 @@ export const login = async (req, res) => {
         const { email, password } = req.body;
         
            //find a user by their email
-           const user = await signInModel.findOne({email: email});
+           const user = await accountModel.findOne({email: email});
         console.log({user})
            //if user email is found, compare password with bcrypt
            if (user) {
