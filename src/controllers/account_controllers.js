@@ -21,24 +21,26 @@ export const createUser = async (req, res, next) => {
         const data = req.body
         // Hash plain password
         const hashedPassword = await hashPassword(req.body.password)
-        //
-        // const user = await accountModel.find(data.email)
-        // //if(user){
-        //     return res.send('')
-        // }else{
+        
+        const user = await accountModel.findOne({ email: data.email})
+         if(!user){
+
+            const { firstName, email, lastName, country, companyName } = await accountModel.create({
+                ...data,
+                password: hashedPassword
+            })
+             res.status(201).json({
+                firstName,
+                email,
+                lastName,
+                country, 
+                companyName
+            })  
             
-        // }
-        const { firstName, email, lastName, country, companyName } = await accountModel.create({
-            ...data,
-            password: hashedPassword
-        })
-        res.status(201).json({
-            firstName,
-            email,
-            lastName,
-            country, 
-            companyName
-        })
+        }else{
+             res.send('Authentication fail')
+        }
+       
     } catch (error) {
 
         // the next will handle the express error
