@@ -4,7 +4,7 @@ import { accountModel } from "./account.js"
 
 
 async function hashPassword(password) {
-    const res = await bcrypt.hash(password, 6)
+    const res = await bcrypt.hash(password, 10)
     return res
 }
 
@@ -12,7 +12,6 @@ async function compare(userPassword, hashedPassword) {
     const res = await bcrypt.compare(userPassword, hashedPassword)
     return res
 }
-
 
 
 
