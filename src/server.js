@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import router from "./routes/accountRoute.js";
+import promoRouter from "./routes/promotionRoute.js";
 import { mongoose } from "mongoose";
 import cors from 'cors'
 
@@ -21,7 +22,7 @@ mongoose.connect(mongoUrl).then(()=>{
 const PORT = process.env.PORT || 8080;
 
 
-app.use(router)
+app.use(router, promoRouter)
 
 
 

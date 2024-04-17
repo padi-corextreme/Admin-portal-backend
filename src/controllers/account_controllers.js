@@ -85,7 +85,7 @@ export const deleteAccount = async (req, res, next) => {
 
         const id = req.params.id
         const accountDelete = await accountModel.findByIdAndDelete(id)
-        res.status(201).json({ message: `Your account with ${accountDelete} has been deleted successfully` })
+        res.status(201).json({ message: `Your account ${accountDelete} has been deleted successfully` })
     } catch (error) {
         next(error)
     }
