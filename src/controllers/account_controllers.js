@@ -4,7 +4,7 @@ import { accountModel } from "../models/account.js"
 
 
 async function hashPassword(password) {
-    const res = await bcrypt.hash(password, 6)
+    const res = await bcrypt.hash(password, 10)
     return res
 }
 
@@ -15,31 +15,32 @@ async function compare(userPassword, hashedPassword) {
 
 
 
-
 // creating account controllers
 export const createUser = async (req, res, next) => {
     try {
         const data = req.body
         // Hash plain password
         const hashedPassword = await hashPassword(req.body.password)
-        //
-        // const user = await accountModel.find(data.email)
-        // //if(user){
-        //     return res.send('')
-        // }else{
+        
+        const user = await accountModel.findOne({ email: data.email})
+         if(!user){
+
+            const { firstName, email, lastName, country, companyName } = await accountModel.create({
+                ...data,
+                password: hashedPassword
+            })
+             res.status(201).json({
+                firstName,
+                email,
+                lastName,
+                country, 
+                companyName
+            })  
             
-        // }
-        const { firstName, email, lastName, country, companyName } = await accountModel.create({
-            ...data,
-            password: hashedPassword
-        })
-        res.status(201).json({
-            firstName,
-            email,
-            lastName,
-            country, 
-            companyName
-        })
+        }else{
+             res.send('Authentication fail')
+        }
+       
     } catch (error) {
 
         // the next will handle the express error
@@ -84,7 +85,7 @@ export const deleteAccount = async (req, res, next) => {
 
         const id = req.params.id
         const accountDelete = await accountModel.findByIdAndDelete(id)
-        res.status(201).json({ message: `Your account with ${accountDelete} has been deleted successfully` })
+        res.status(201).json({ message: `Your account ${accountDelete} has been deleted successfully` })
     } catch (error) {
         next(error)
     }
