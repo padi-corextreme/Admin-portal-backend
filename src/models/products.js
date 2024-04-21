@@ -1,4 +1,3 @@
-import { ObjectId, Timestamp } from "mongodb";
 import mongoose from "mongoose";
 
 const schema = mongoose.Schema;
@@ -8,10 +7,8 @@ productName: {type: "String", required: true},
 description:{type: "String", required: true},
 image: {type:"String", required: true},
 categories: {type:"String", enum:['clothing','home appliances','fashion', 'furniture','groceries']},
-createdBy: {type:ObjectId, required: true},
-Timestamp: true
-
-})
+createdBy: {type: mongoose.Types.ObjectId, required: true},
+}, {timestamps: true})
 
 
 export const productModel = mongoose.model('product', productSchema, 'products')

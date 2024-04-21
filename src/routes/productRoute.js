@@ -14,3 +14,5 @@ router.get('/api/admin/product/:id', getProduct)
 router.patch('/api/admin/product/:id', patchProduct)
 
 router.delete('/api/admin/product/:id', deleteProduct)
+
+export default router

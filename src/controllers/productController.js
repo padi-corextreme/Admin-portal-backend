@@ -1,6 +1,6 @@
 import { productModel } from "../models/products.js";
 
-export const addProduct = async (res, req)=>{
+export const addProduct = async (req, res)=>{
     try {
         const data = req.body
         const postProduct = await productModel.create(data)
@@ -12,7 +12,7 @@ export const addProduct = async (res, req)=>{
 
 }
 
-export const getProducts = async (res, req) =>{
+export const getProducts = async (req, res) =>{
     try {
         const data = req.body
         const fetchProducts = await productModel.find(data)
@@ -23,7 +23,7 @@ export const getProducts = async (res, req) =>{
 }
 
 
-export const getProduct = async (res,req) => {
+export const getProduct = async (req,res) => {
     try {
         const id = req.params.id
         const fetchProduct = await productModel.findById(id)
@@ -34,7 +34,7 @@ export const getProduct = async (res,req) => {
     }
 }
 
-export const patchProduct = async (res,req) => {
+export const patchProduct = async (req, res) => {
     try {
         const id = req.params.id
         const updateProduct = await productModel.findByIdAndUpdate(id)
@@ -45,7 +45,7 @@ export const patchProduct = async (res,req) => {
 }
 
 
-export const deleteProduct = async (res, req) =>{
+export const deleteProduct = async (req, res) =>{
     try {
         const id = req.params.id
         const removeProduct = await productModel.findByIdAndDelete(id)
