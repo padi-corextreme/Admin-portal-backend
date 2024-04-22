@@ -1,6 +1,6 @@
-import { Router } from "express";
-import multer from "multer";
-import { createPromotion, deletePromotion, getAllPromotion, updatePromotion } from "../controllers/promotion_controller.js";
+import { Router } from 'express';
+import multer from 'multer';
+import { createPromotion, deletePromotion, getAllPromotion, updatePromotion } from '../controllers/promotion_controller.js';
 
 const router = Router();
 
