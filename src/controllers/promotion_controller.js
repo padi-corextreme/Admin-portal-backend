@@ -4,7 +4,7 @@ export const createPromotion = async (req, res, next) => {
     try {
         const data = req.body;
         const response = await promotionModel.create(data);
-        res.status(202).json(response);
+        res.status(201).json(response);
     } catch (error) {
         next(error);
     }

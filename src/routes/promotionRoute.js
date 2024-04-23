@@ -5,16 +5,7 @@ import { createPromotion, deletePromotion, getAllPromotion, updatePromotion } fr
 const router = Router();
 
 // Set up multer storage for handling file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, 'uploads/'); // Specify the directory where uploaded images will be stored
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname); // Keep the original filename for the uploaded image
-  }
-});
-
-const upload = multer({ storage: storage });
+const upload = multer({dest: 'uploads/images'});
 
 // Route for creating promotions with file uploads
 router.post('/api/admin/promotions', upload.single('image'), createPromotion);
