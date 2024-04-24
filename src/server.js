@@ -17,17 +17,19 @@ app.use(express.static('uploads'));
 
 
 const mongoUrl = process.env.MONGODB_URL
-mongoose.connect(mongoUrl).then(()=>{
+mongoose.connect(mongoUrl).then(() => {
     console.log('Database is running')
-}).catch((error)=>console.log(error))
+}).catch((error) => console.log(error))
 
 const PORT = process.env.PORT || 8080;
 
 
-app.use(router, promoRouter, proRoute)
+app.use(router)
+app.use(promoRouter)
+app.use(proRoute)
 
 
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server is running! ${PORT}`);
 });
