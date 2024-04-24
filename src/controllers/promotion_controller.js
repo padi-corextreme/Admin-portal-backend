@@ -6,7 +6,10 @@ import { promotionModel } from "../models/promotion.js";
 export const createPromotion = async (req, res, next) => {
     try {
         const data = req.body
-        const response = await promotionModel.create(data)
+        const response = await promotionModel.create({
+            ...data,
+            image: req.file.filename
+        })
         res.status(202).json(response)
     } catch (error) {
         next(error)
