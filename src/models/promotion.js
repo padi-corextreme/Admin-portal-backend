@@ -9,7 +9,7 @@ const promotionSchema = new schema({
     originalPrice: { type: String, required: true },
     discountPrice: { type: Number, required: true },
     categories: { type: String, enum: ['clothing', 'home appliances', 'fashion', 'furniture', 'groceries'] },
-    /*createdBy: { type: mongoose.Types.ObjectId, required: true },*/
+    createdBy: { type: mongoose.Types.ObjectId, required: true },
 }, {
     timestamps: true
 })
