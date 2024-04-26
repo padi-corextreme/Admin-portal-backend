@@ -16,7 +16,7 @@ app.use(cors())
 app.use(express.static('uploads'));
 
 
-const mongoUrl = process.env.MONGODB_URL
+const mongoUrl = "mongodb+srv://padi-app:padi-app@lyril.p1yidoa.mongodb.net/padi-app?retryWrites=true&w=majority&appName=Lyril"
 mongoose.connect(mongoUrl).then(() => {
     console.log('Database is running')
 }).catch((error) => console.log(error))
